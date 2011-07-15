@@ -72,7 +72,7 @@
 #
 # [rd]: http://github.com/rtomayko/rdiscount
 # [cr]: http://github.com/rubychan/coderay
-require 'rdiscount'
+require 'maruku'
 require 'coderay'
 require 'active_record' unless defined?(ActiveRecord)
 
@@ -90,7 +90,7 @@ module Markdownizer
         $1 << ('#' * hierarchy) << $2 << $3
       end
       text.gsub!("\\#",'#')
-      RDiscount.new(text).to_html
+      Maruku.new(text).to_html
     end
 
     # `Markdownizer.coderay` method parses a code block delimited from `{% code

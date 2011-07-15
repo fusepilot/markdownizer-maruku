@@ -4,11 +4,11 @@ describe Markdownizer do
   describe ".markdown(text)" do
     let(:text) { "#My markdown text"}
     context 'when the hierarchy is 0' do
-      it 'calls RDiscount to markdownize the text' do
-        rdiscount, html_markdown = double(:rdiscount), double(:html_markdown)
+      it 'calls Maruku to markdownize the text' do
+        maruku, html_markdown = double(:maruku), double(:html_markdown)
 
-        RDiscount.should_receive(:new).with(text).and_return rdiscount
-        rdiscount.should_receive(:to_html).and_return html_markdown
+        Maruku.should_receive(:new).with(text).and_return maruku
+        maruku.should_receive(:to_html).and_return html_markdown
         
         subject.markdown(text).should == html_markdown
       end
@@ -21,7 +21,7 @@ describe Markdownizer do
         ###This is an H3
         """
         result = double :result, :to_html => true
-        RDiscount.should_receive(:new).with do |t|
+        Maruku.should_receive(:new).with do |t|
           t.should =~ /###This is an H1/
           t.should =~ /####This is an H2/
           t.should =~ /#####This is an H3/
@@ -38,7 +38,7 @@ describe Markdownizer do
         ###This is an H3
         """
         result = double :result, :to_html => true
-        RDiscount.should_receive(:new).with do |t|
+        Maruku.should_receive(:new).with do |t|
           t.should =~ /###This is an H1/
           t.should =~ /#method/
           t.should_not =~ /###method/

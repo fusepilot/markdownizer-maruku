@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.rubyforge_project = "markdownizer"
 
   s.add_runtime_dependency 'activerecord', '>= 3.0.3'
-  s.add_runtime_dependency 'rdiscount'
+  s.add_runtime_dependency 'maruku'
   s.add_runtime_dependency 'coderay'
 
   s.add_development_dependency 'rocco'
